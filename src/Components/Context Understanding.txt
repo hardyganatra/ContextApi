@@ -1,0 +1,87 @@
+how to get data Into the context and out of it ?????
+There are 2 ways to make Data rnter Context Object and 2 ways to get Data out of Context Object
+2 Ways to enter data => Default Value or Provider Object in Parent Component
+2 ways to get Data out => refer this.property in nested  chile component or make a consumer component 
+
+we make a new folder in src COntext and create a file _any_Context.js => in this file we create Context Object
+
+Putting info into Contect => 
+1) Default Value => export default React.createContext("English);
+
+
+
+
+Getting info Out of Context =>>
+
+1 ) import _any_Context.js in file u require that  data
+2) Setup contextType =>> link Button Component to Context Object
+2) get referance info inside context object we use this.context property
+
+
+class Based Components = 
+in starting of class 
+static contextType = languageContext;
+get data by console this.context
+Functional Components = const langauge = useContext(LanguageContext);
+get data by console language
+
+How to change Vale inside Context 
+
+wrap the component where data needs to be communicated by Provider eg
+
+
+<languageContext.Provider value = {this.state.language}>
+    </UserCreate>
+<languageContext.Provider>
+
+
+Remember each Provider always has a seperate pipe of information 
+
+<languageContext.Provider value = {this.state.language}>
+    </UserCreate>
+<languageContext.Provider>
+
+above will change with state
+
+
+<languageContext.Provider value = {"Dutch"}>
+    </UserCreate>
+<languageContext.Provider>
+
+always remain Dutch
+
+<languageContext.Provider value = {"English"}>
+    </UserCreate>
+<languageContext.Provider>
+
+always remain English
+
+
+Basically Dosent have a Global Store
+
+
+
+2nd way to get Data out is Consumer instead Context in Component where we need data
+
+<LanguageContext.Consumer>
+				{(value) => {
+					return value === "English" ? "EngSUMBIT" : "DutchSubmit";
+				}}
+</LanguageContext.Consumer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
